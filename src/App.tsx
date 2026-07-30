@@ -33,7 +33,7 @@ function App() {
       <section className="card source">
         <label htmlFor="source">URL trang truyện</label>
         <div className="source-row">
-          <input id="source" type="url" placeholder="https://docln.sbs/truyen/… hoặc https://uukanshu.cc/book/17318/" value={metadata.sourceUrl}
+          <input id="source" type="url" placeholder="Hako, UU看書 hoặc https://www.novel543.com/0410698823/" value={metadata.sourceUrl}
             onChange={(event) => updateMetadata('sourceUrl', event.target.value)} disabled={loading} />
           <button className="secondary" onClick={() => void inspect()} disabled={loading || !metadata.sourceUrl.trim()}>
             Đọc trang

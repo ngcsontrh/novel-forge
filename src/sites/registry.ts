@@ -1,8 +1,9 @@
 import { hakoSite } from '~/hako'
+import { novel543Site } from '~/novel543'
 import type { SiteAdapter } from '~/sites/types'
 import { uukanshuSite } from '~/uukanshu'
 
-const sites: readonly SiteAdapter[] = [hakoSite, uukanshuSite]
+const sites: readonly SiteAdapter[] = [hakoSite, uukanshuSite, novel543Site]
 
 export function findSiteForBookUrl(value: string): SiteAdapter | undefined {
   return sites.find((site) => site.supportsBookUrl(value))

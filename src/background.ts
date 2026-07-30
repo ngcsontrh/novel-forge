@@ -2,18 +2,6 @@ import { cleanBookUrl, isSupportedBookUrl } from '~/config'
 
 const RENDER_TIMEOUT_MS = 45_000
 const RENDER_POLL_MS = 500
-const RENDERABLE_PAGE_HOSTS = new Set([
-  'ln.hako.vn',
-  'docln.sbs',
-  'uukanshu.cc',
-  'www.uukanshu.cc',
-])
-const RENDERABLE_IMAGE_HOSTS = new Set([
-  'i.hako.vip',
-  'i2.hako.vip',
-  'cdn.phototourl.com',
-  'image.uukanshu.cc',
-])
 let loaderTabId: number | undefined
 
 chrome.action.onClicked.addListener(async (tab) => {
@@ -59,7 +47,7 @@ function isRenderedHtmlRequest(
 
   try {
     const url = new URL(value.url)
-    return url.protocol === 'https:' && RENDERABLE_PAGE_HOSTS.has(url.hostname)
+    return url.protocol === 'https:'
   } catch {
     return false
   }
@@ -72,7 +60,7 @@ function isRenderedImageRequest(message: unknown): message is { type: 'load-rend
 
   try {
     const url = new URL(value.url)
-    return url.protocol === 'https:' && RENDERABLE_IMAGE_HOSTS.has(url.hostname)
+    return url.protocol === 'https:'
   } catch {
     return false
   }
@@ -87,11 +75,12 @@ function isReleaseResourceLoaderRequest(message: unknown) {
 }
 
 async function loadRenderedHtml(url: string, readySelector: string) {
+  await requireHostPermission(url)
   const tabId = await navigateLoaderTab(url)
   const deadline = Date.now() + RENDER_TIMEOUT_MS
   while (Date.now() < deadline) {
     const result = await inspectTab(tabId, readySelector).catch(() => undefined)
-    if (result?.ready && result.html) return result.html
+    if (result?.ready && result.html && samePageUrl(result.url, url)) return result.html
     await wait(RENDER_POLL_MS)
   }
   throw new Error(
@@ -100,14 +89,25 @@ async function loadRenderedHtml(url: string, readySelector: string) {
 }
 
 async function loadRenderedImage(url: string) {
+  await requireHostPermission(url)
   const tabId = await navigateLoaderTab(url)
   const deadline = Date.now() + RENDER_TIMEOUT_MS
   while (Date.now() < deadline) {
     const result = await inspectImageTab(tabId).catch(() => undefined)
-    if (result?.dataUrl) return result.dataUrl
+    if (result?.dataUrl && samePageUrl(result.url, url)) return result.dataUrl
     await wait(RENDER_POLL_MS)
   }
   throw new Error('Không tải được ảnh nguồn sau 45 giây.')
+}
+
+async function requireHostPermission(value: string) {
+  const url = new URL(value)
+  const allowed = await chrome.permissions.contains({
+    origins: [`${url.origin}/*`],
+  })
+  if (!allowed) {
+    throw new Error(`Extension chưa được cấp quyền truy cập ${url.origin}.`)
+  }
 }
 
 async function navigateLoaderTab(url: string) {
@@ -140,10 +140,19 @@ async function inspectTab(tabId: number, readySelector: string) {
     func: (selector: string) => ({
       ready: Boolean(document.querySelector(selector)),
       html: document.documentElement?.outerHTML ?? '',
+      url: location.href,
     }),
     args: [readySelector],
   })
   return results[0]?.result
+}
+
+function samePageUrl(actual: string, expected: string) {
+  const actualUrl = new URL(actual)
+  const expectedUrl = new URL(expected)
+  actualUrl.hash = ''
+  expectedUrl.hash = ''
+  return actualUrl.href === expectedUrl.href
 }
 
 async function inspectImageTab(tabId: number) {
@@ -159,7 +168,10 @@ async function inspectImageTab(tabId: number) {
       const context = canvas.getContext('2d')
       if (!context) return {}
       context.drawImage(image, 0, 0)
-      return { dataUrl: canvas.toDataURL('image/jpeg', 0.92) }
+      return {
+        dataUrl: canvas.toDataURL('image/jpeg', 0.92),
+        url: location.href,
+      }
     },
   })
   return results[0]?.result

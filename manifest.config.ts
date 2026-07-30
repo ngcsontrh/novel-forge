@@ -30,15 +30,7 @@ export default defineManifest({
     'storage',
     'activeTab',
     'scripting',
-    'declarativeNetRequest',
   ],
-  declarative_net_request: {
-    rule_resources: [{
-      id: 'uukanshu-images',
-      enabled: true,
-      path: 'uukanshu-rules.json',
-    }],
-  },
   host_permissions: [
     'https://ln.hako.vn/*',
     'https://docln.sbs/*',
@@ -48,5 +40,8 @@ export default defineManifest({
     'https://uukanshu.cc/*',
     'https://www.uukanshu.cc/*',
     'https://image.uukanshu.cc/*',
+    'https://novel543.com/*',
+    'https://www.novel543.com/*',
+    'https://*.novel543.com/*',
   ],
 })

@@ -43,3 +43,15 @@ test('supports and normalizes UU看書 book URLs', () => {
     'https://uukanshu.cc/book/17318/',
   )
 })
+
+test('supports and normalizes Novel543 book URLs', () => {
+  assert.equal(findSiteForBookUrl('https://www.novel543.com/0410698823/')?.id, 'novel543')
+  assert.equal(findSiteForBookUrl('https://novel543.com/0410698823')?.id, 'novel543')
+  assert.equal(findSiteForBookUrl('https://www.novel543.com/0410698823/8096_1.html'), undefined)
+  assert.equal(findSiteForBookUrl('http://www.novel543.com/0410698823/'), undefined)
+  assert.equal(findSiteForBookUrl('https://www.novel543.com.evil.test/0410698823/'), undefined)
+  assert.equal(
+    normalizeSupportedBookUrl('https://novel543.com/0410698823?from=test#chapters'),
+    'https://www.novel543.com/0410698823/',
+  )
+})
