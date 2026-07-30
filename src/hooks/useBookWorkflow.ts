@@ -3,6 +3,7 @@ import { DEFAULT_CRAWL_DELAY_MS, isSupportedBookUrl } from '~/config'
 import { buildEpub, safeFilename } from '~/epub'
 import { findInitialBookUrl, rememberBookUrl, saveBlob } from '~/services/browser'
 import { crawlChapters } from '~/services/chapterCrawler'
+import { releaseResourceLoader } from '~/services/resourceLoader'
 import { requireSiteForBookUrl } from '~/sites'
 import type { BookMetadata, ChapterLink } from '~/types'
 
@@ -69,6 +70,7 @@ export function useBookWorkflow() {
       setError(errorMessage(reason, 'Có lỗi khi đọc trang truyện.'))
       setProgress('')
     } finally {
+      await releaseResourceLoader()
       setLoading(false)
     }
   }
@@ -93,6 +95,7 @@ export function useBookWorkflow() {
     } catch (reason) {
       setError(errorMessage(reason, 'Không thể tạo EPUB.'))
     } finally {
+      await releaseResourceLoader()
       setLoading(false)
     }
   }

@@ -1,5 +1,5 @@
 import { firstElement, parseHtml, text } from '~/hako/document'
-import { fetchRenderedHtml } from '~/services/renderedPage'
+import { loadRenderedHtml } from '~/services/resourceLoader'
 import type { Chapter, ChapterLink } from '~/types'
 
 const ALLOWED_CONTENT_TAGS = new Set([
@@ -8,7 +8,7 @@ const ALLOWED_CONTENT_TAGS = new Set([
 ])
 
 export async function readUukanshuChapter(link: ChapterLink): Promise<Chapter> {
-  const document = parseHtml(await fetchRenderedHtml(link.url, '.readcotent'))
+  const document = parseHtml(await loadRenderedHtml(link.url, '.readcotent'))
   const title = text(document, ['.readtitle', 'h1']) || link.title
   const content = firstElement(document, ['.readcotent'])
   if (!content) throw new Error(`Không tìm thấy nội dung: ${link.title}`)

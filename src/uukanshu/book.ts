@@ -1,5 +1,5 @@
 import { absoluteUrl, parseHtml, text } from '~/hako/document'
-import { fetchRenderedHtml, fetchRenderedImageDataUrl } from '~/services/renderedPage'
+import { loadRenderedHtml, loadRenderedImage } from '~/services/resourceLoader'
 import type { ChapterLink, ScrapedBook } from '~/types'
 import { isUukanshuBookUrl, normalizeUukanshuBookUrl } from '~/uukanshu/url'
 
@@ -9,7 +9,7 @@ export async function readUukanshuBook(sourceUrl: string): Promise<ScrapedBook> 
   }
 
   const url = normalizeUukanshuBookUrl(sourceUrl)
-  const document = parseHtml(await fetchRenderedHtml(url, '#list-chapterAll'))
+  const document = parseHtml(await loadRenderedHtml(url, '#list-chapterAll'))
   const title = text(document, ['.bookinfo h1', 'h1'])
   if (!title) throw new Error('Không nhận diện được tên truyện từ trang UU看書 này.')
   const remoteCoverUrl = absoluteUrl(
@@ -18,7 +18,7 @@ export async function readUukanshuBook(sourceUrl: string): Promise<ScrapedBook> 
     url,
   )
   const coverUrl = remoteCoverUrl
-    ? await fetchRenderedImageDataUrl(remoteCoverUrl).catch(() => remoteCoverUrl)
+    ? await loadRenderedImage(remoteCoverUrl).catch(() => remoteCoverUrl)
     : undefined
 
   return {
