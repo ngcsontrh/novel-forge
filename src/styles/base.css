@@ -1,0 +1,76 @@
+:root {
+  font-family: Roboto, Arial, "Segoe UI", system-ui, sans-serif;
+  color: #292521;
+  background: #f5f1eb;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(145deg, #f8f5f0 0%, #eee7de 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  transition: .15s;
+}
+
+button:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #ddd2c7;
+  border-radius: 9px;
+  background: #fff;
+  padding: 9px 11px;
+  color: #332e2a;
+  outline: none;
+  transition: .15s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #9a714e;
+  box-shadow: 0 0 0 3px #a67b5420;
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.45;
+}
+
+label {
+  display: block;
+  margin: 11px 0 6px;
+  color: #61564c;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+small {
+  margin-left: 5px;
+  color: #9a8d80;
+  font-weight: 400;
+}

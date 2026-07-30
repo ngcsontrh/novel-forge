@@ -1,0 +1,94 @@
+.volume-option {
+  border-bottom: 1px solid #e9dfd5;
+}
+
+.volume-option:last-child {
+  border-bottom: 0;
+}
+
+.volume-option summary {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  background: #f7f0e8;
+  padding: 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.volume-option summary::-webkit-details-marker {
+  display: none;
+}
+
+.volume-option summary::after {
+  grid-column: 4;
+  color: #927c69;
+  content: "›";
+  font-size: 18px;
+  line-height: 1;
+  transition: transform .15s;
+}
+
+.volume-option[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.volume-option summary input,
+.chapter-option input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: #79583d;
+}
+
+.volume-title {
+  overflow: hidden;
+  color: #4b3b30;
+  font: 700 12px Roboto, Arial, "Segoe UI", sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.volume-count {
+  color: #8d7c6d;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.chapter-list {
+  background: #fff;
+}
+
+.chapter-option {
+  display: grid;
+  grid-template-columns: 18px 28px minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  border-bottom: 1px solid #f2ece6;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.chapter-option:last-child {
+  border-bottom: 0;
+}
+
+.chapter-option:hover {
+  background: #faf6f1;
+}
+
+.chapter-option > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chapter-number {
+  color: #a49588;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,72 @@
+.cover-editor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 2px 0 8px;
+}
+
+.cover-preview {
+  display: grid;
+  place-items: center;
+  flex: 0 0 88px;
+  width: 88px;
+  height: 122px;
+  overflow: hidden;
+  border: 1px solid #dfd4c9;
+  border-radius: 9px;
+  background: #f3ece5;
+  color: #a09387;
+  font-size: 10px;
+  text-align: center;
+}
+
+.cover-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-controls {
+  min-width: 0;
+}
+
+.cover-controls strong {
+  display: block;
+  color: #4a3b31;
+  font: 700 13px Roboto, Arial, "Segoe UI", sans-serif;
+}
+
+.cover-controls p {
+  margin: 5px 0 10px;
+  color: #94867a;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.cover-upload {
+  display: inline-flex;
+  margin: 0;
+  border: 1px solid #cdb9a8;
+  border-radius: 8px;
+  background: #f4ede5;
+  padding: 7px 10px;
+  color: #684b35;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.cover-upload:hover {
+  background: #eadfd3;
+}
+
+.cover-upload input {
+  display: none;
+}
+
+.cover-remove {
+  margin-left: 7px;
+  background: transparent;
+  padding: 7px 5px;
+  color: #a2544a;
+  font-size: 11px;
+}

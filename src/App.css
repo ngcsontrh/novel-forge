@@ -1,0 +1,171 @@
+.app {
+  width: min(680px, 100%);
+  padding: 32px 20px 48px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 5px 14px #855e3d38;
+}
+
+h1 {
+  margin: 0;
+  color: #33271f;
+  font: 700 20px/1.2 Roboto, Arial, "Segoe UI", sans-serif;
+}
+
+header p {
+  margin: 3px 0 0;
+  color: #87786b;
+  font-size: 12px;
+}
+
+.card {
+  margin-bottom: 12px;
+  border: 1px solid #e5dcd1;
+  border-radius: 14px;
+  background: #fffdf9;
+  padding: 15px;
+  box-shadow: 0 7px 22px #69513c0d;
+}
+
+.source label {
+  margin-top: 0;
+}
+
+.source-row {
+  display: flex;
+  gap: 8px;
+}
+
+.source-row input {
+  min-width: 0;
+}
+
+.secondary {
+  flex: 0 0 auto;
+  border: 1px solid #dacabd;
+  border-radius: 9px;
+  background: #f4ede5;
+  padding: 0 13px;
+  color: #684b35;
+}
+
+.secondary:not(:disabled):hover {
+  background: #eadfd3;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee7de;
+  padding-bottom: 11px;
+}
+
+h2 {
+  margin: 0;
+  color: #3c3028;
+  font: 700 15px Roboto, Arial, "Segoe UI", sans-serif;
+}
+
+.section-title > span {
+  border-radius: 99px;
+  background: #9a714e;
+  padding: 4px 8px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.status {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 12px 0;
+  border-radius: 9px;
+  background: #d5ead9;
+  padding: 10px 12px;
+  color: #436049;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.status.error {
+  background: #f3d3ce;
+  color: #93453d;
+}
+
+.status i {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  margin-top: 2px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  border-radius: 10px;
+  background: #79583d;
+  padding: 12px;
+  color: #fff;
+  box-shadow: 0 5px 14px #79583d35;
+}
+
+.download:not(:disabled):hover {
+  background: #684932;
+  transform: translateY(-1px);
+}
+
+.download span {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.hint {
+  margin: 9px 18px 0;
+  color: #9a8d80;
+  font-size: 10px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .app {
+    padding: 20px 14px 36px;
+  }
+
+  .source-row {
+    flex-direction: column;
+  }
+
+  .secondary {
+    height: 40px;
+  }
+}

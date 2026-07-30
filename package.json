@@ -1,0 +1,40 @@
+{
+  "name": "novelforge",
+  "description": "Chrome extension chuyển đổi web novel từ nhiều nguồn thành tệp EPUB.",
+  "author": {
+    "name": "Trịnh Ngọc Sơn",
+    "url": "https://github.com/ngcsontrh"
+  },
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "check": "pnpm test && pnpm lint && pnpm build",
+    "lint": "oxlint",
+    "test": "node --import ./tests/register-alias.mjs --test --experimental-strip-types tests/*.test.ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@crxjs/vite-plugin": "^2.7.1",
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/babel__core": "^7.20.5",
+    "@types/chrome": "^0.2.2",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.5"
+  }
+}

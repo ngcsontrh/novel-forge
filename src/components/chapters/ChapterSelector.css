@@ -1,0 +1,35 @@
+.chapter-heading {
+  align-items: flex-start;
+}
+
+.chapter-heading p {
+  margin: 4px 0 0;
+  color: #96887b;
+  font-size: 11px;
+}
+
+.chapter-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.chapter-actions button {
+  border: 1px solid #dacabd;
+  border-radius: 7px;
+  background: #f4ede5;
+  padding: 5px 8px;
+  color: #684b35;
+  font-size: 10px;
+}
+
+.chapter-actions button:hover {
+  background: #eadfd3;
+}
+
+.volume-list {
+  max-height: 430px;
+  overflow: auto;
+  border: 1px solid #eee5dc;
+  border-radius: 9px;
+  background: #fff;
+}

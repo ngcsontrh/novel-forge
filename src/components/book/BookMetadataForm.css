@@ -1,0 +1,19 @@
+.fields label:first-of-type {
+  margin-top: 0;
+}
+
+.unit-input {
+  position: relative;
+}
+
+.unit-input input {
+  padding-right: 42px;
+}
+
+.unit-input span {
+  position: absolute;
+  top: 9px;
+  right: 12px;
+  color: #9a8d80;
+  font-size: 12px;
+}
