@@ -25,12 +25,28 @@ export default defineManifest({
     service_worker: 'src/background.ts',
     type: 'module',
   },
-  permissions: ['downloads', 'storage', 'activeTab'],
+  permissions: [
+    'downloads',
+    'storage',
+    'activeTab',
+    'scripting',
+    'declarativeNetRequest',
+  ],
+  declarative_net_request: {
+    rule_resources: [{
+      id: 'uukanshu-images',
+      enabled: true,
+      path: 'uukanshu-rules.json',
+    }],
+  },
   host_permissions: [
     'https://ln.hako.vn/*',
     'https://docln.sbs/*',
     'https://i.hako.vip/*',
     'https://i2.hako.vip/*',
     'https://cdn.phototourl.com/*',
+    'https://uukanshu.cc/*',
+    'https://www.uukanshu.cc/*',
+    'https://image.uukanshu.cc/*',
   ],
 })

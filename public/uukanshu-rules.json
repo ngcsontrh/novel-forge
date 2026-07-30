@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "requestHeaders": [
+        {
+          "header": "Referer",
+          "operation": "set",
+          "value": "https://uukanshu.cc/"
+        }
+      ]
+    },
+    "condition": {
+      "urlFilter": "||image.uukanshu.cc/",
+      "resourceTypes": [
+        "image",
+        "xmlhttprequest",
+        "main_frame"
+      ]
+    }
+  }
+]

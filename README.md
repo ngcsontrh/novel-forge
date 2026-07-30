@@ -10,7 +10,7 @@ website.
 
 ## Features
 
-- Reads novel metadata, volumes, and chapters from supported sources.
+- Reads novel metadata, volumes, and chapters from Hako/docln and UU看書 (`uukanshu.cc`).
 - Lets you edit the title, author, description, tags, and cover.
 - Supports selecting complete volumes or individual chapters.
 - Preserves the original reading order.

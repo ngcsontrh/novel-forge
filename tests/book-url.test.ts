@@ -31,3 +31,15 @@ test('rejects unsafe URLs and removes non-book URL parts', () => {
     'https://docln.sbs/truyen/example',
   )
 })
+
+test('supports and normalizes UU看書 book URLs', () => {
+  assert.equal(findSiteForBookUrl('https://uukanshu.cc/book/17318/')?.id, 'uukanshu')
+  assert.equal(findSiteForBookUrl('https://www.uukanshu.cc/book/17318')?.id, 'uukanshu')
+  assert.equal(findSiteForBookUrl('https://uukanshu.cc/book/17318/10252476.html'), undefined)
+  assert.equal(findSiteForBookUrl('http://uukanshu.cc/book/17318/'), undefined)
+  assert.equal(findSiteForBookUrl('https://uukanshu.cc.evil.test/book/17318/'), undefined)
+  assert.equal(
+    normalizeSupportedBookUrl('https://www.uukanshu.cc/book/17318?from=test#chapters'),
+    'https://uukanshu.cc/book/17318/',
+  )
+})
