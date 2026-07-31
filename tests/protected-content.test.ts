@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { decodeProtectedPayload } from '~/hako'
+import { decodeProtectedPayload } from '~/sites/hako'
 
 test('decodes and orders protected chapter payloads', () => {
   const reversed = [...btoa('noi dung')].reverse().join('')

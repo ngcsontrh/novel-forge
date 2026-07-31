@@ -1,5 +1,5 @@
-import { absoluteUrl, parseHtml, text } from '~/hako/document'
-import { isNovel543BookUrl, normalizeNovel543BookUrl } from '~/novel543/url'
+import { absoluteUrl, parseHtml, text } from '~/sites/document'
+import { isNovel543BookUrl, normalizeNovel543BookUrl } from '~/sites/novel543/url'
 import { loadRenderedHtml, loadRenderedImage } from '~/services/resourceLoader'
 import type { ChapterLink, ScrapedBook } from '~/types'
 

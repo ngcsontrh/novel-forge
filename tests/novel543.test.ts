@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { readChapterLinks } from '~/novel543/book'
-import { findContinuationUrl } from '~/novel543/chapter'
+import { readChapterLinks } from '~/sites/novel543/book'
+import { findContinuationUrl } from '~/sites/novel543/chapter'
 
 test('reads Novel543 chapters from the second chapter list', () => {
   const anchors = [

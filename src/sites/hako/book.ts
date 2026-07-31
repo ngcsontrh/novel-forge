@@ -1,7 +1,7 @@
-import { isHakoBookUrl } from '~/hako/url'
+import { isHakoBookUrl } from '~/sites/hako/url'
 import type { ChapterLink, ScrapedBook } from '~/types'
-import { absoluteUrl, firstElement, parseHtml, text } from '~/hako/document'
-import { fetchHtml } from '~/hako/http'
+import { absoluteUrl, firstElement, parseHtml, text } from '~/sites/document'
+import { fetchHtml } from '~/sites/http'
 
 const CHAPTER_LINK_SELECTOR = [
   '.chapter-name a',

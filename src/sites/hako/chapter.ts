@@ -1,7 +1,7 @@
 import type { Chapter, ChapterLink } from '~/types'
-import { firstElement, parseHtml, text } from '~/hako/document'
-import { fetchHtml } from '~/hako/http'
-import { revealProtectedContent } from '~/hako/protected-content'
+import { firstElement, parseHtml, text } from '~/sites/document'
+import { fetchHtml } from '~/sites/http'
+import { revealProtectedContent } from '~/sites/hako/protected-content'
 
 const ALLOWED_CONTENT_TAGS = new Set([
   'P', 'BR', 'H2', 'H3', 'H4', 'STRONG', 'B', 'EM', 'I',

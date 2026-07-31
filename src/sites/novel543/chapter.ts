@@ -1,4 +1,4 @@
-import { firstElement, parseHtml, text } from '~/hako/document'
+import { firstElement, parseHtml, text } from '~/sites/document'
 import { loadRenderedHtml } from '~/services/resourceLoader'
 import type { Chapter, ChapterLink } from '~/types'
 

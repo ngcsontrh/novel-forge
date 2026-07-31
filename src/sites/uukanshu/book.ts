@@ -1,7 +1,7 @@
-import { absoluteUrl, parseHtml, text } from '~/hako/document'
+import { absoluteUrl, parseHtml, text } from '~/sites/document'
 import { loadRenderedHtml, loadRenderedImage } from '~/services/resourceLoader'
 import type { ChapterLink, ScrapedBook } from '~/types'
-import { isUukanshuBookUrl, normalizeUukanshuBookUrl } from '~/uukanshu/url'
+import { isUukanshuBookUrl, normalizeUukanshuBookUrl } from '~/sites/uukanshu/url'
 
 export async function readUukanshuBook(sourceUrl: string): Promise<ScrapedBook> {
   if (!isUukanshuBookUrl(sourceUrl)) {

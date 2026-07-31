@@ -55,3 +55,21 @@ test('supports and normalizes Novel543 book URLs', () => {
     'https://www.novel543.com/0410698823/',
   )
 })
+
+test('supports and normalizes 69shuba book URLs', () => {
+  assert.equal(findSiteForBookUrl('https://www.69shuba.com/book/90442.htm')?.id, '69shuba')
+  assert.equal(findSiteForBookUrl('https://69shuba.com/book/90442.htm')?.id, '69shuba')
+  assert.equal(findSiteForBookUrl('https://www.69shuba.com/book/90442/')?.id, '69shuba')
+  assert.equal(findSiteForBookUrl('https://www.69shuba.com/txt/90442/40755363'), undefined)
+  assert.equal(findSiteForBookUrl('https://www.69shuba.com/book/90442'), undefined)
+  assert.equal(findSiteForBookUrl('http://www.69shuba.com/book/90442.htm'), undefined)
+  assert.equal(findSiteForBookUrl('https://www.69shuba.com.evil.test/book/90442.htm'), undefined)
+  assert.equal(
+    normalizeSupportedBookUrl('https://69shuba.com/book/90442.htm?from=test#chapters'),
+    'https://www.69shuba.com/book/90442.htm',
+  )
+  assert.equal(
+    normalizeSupportedBookUrl('https://69shuba.com/book/90442/'),
+    'https://www.69shuba.com/book/90442.htm',
+  )
+})

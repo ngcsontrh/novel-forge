@@ -43,5 +43,8 @@ export default defineManifest({
     'https://novel543.com/*',
     'https://www.novel543.com/*',
     'https://*.novel543.com/*',
+    'https://69shuba.com/*',
+    'https://www.69shuba.com/*',
+    'https://cdn.cdnshu.com/*',
   ],
 })

@@ -10,8 +10,11 @@ website.
 
 ## Features
 
-- Reads novel metadata, volumes, and chapters from Hako/docln, UU看書 (`uukanshu.cc`), and Novel543.
+- Reads novel metadata, volumes, and chapters from Hako/docln, UU看書
+  (`uukanshu.cc`), Novel543, and 69書吧 (`69shuba.com`).
 - Joins chapters split across multiple Novel543 pages before packaging them.
+- Rebuilds paragraphs for sources that publish chapters as `<br>`-separated
+  text.
 - Lets you edit the title, author, description, tags, and cover.
 - Supports selecting complete volumes or individual chapters.
 - Preserves the original reading order.
