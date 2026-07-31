@@ -15,7 +15,8 @@
     "check": "pnpm test && pnpm lint && pnpm build",
     "lint": "oxlint",
     "test": "node --import ./tests/register-alias.mjs --test --experimental-strip-types tests/*.test.ts",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky"
   },
   "dependencies": {
     "jszip": "^3.10.1",
@@ -33,6 +34,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
     "babel-plugin-react-compiler": "^1.0.0",
+    "husky": "^9.1.7",
     "oxlint": "^1.71.0",
     "typescript": "~6.0.2",
     "vite": "^8.1.5"
